@@ -8,7 +8,8 @@ class DemoController extends Controller
 {
 public function index()
     {
-        return view('templete');
+       return "Method POST: demoone";
+
     }
 
     public function demotwo()

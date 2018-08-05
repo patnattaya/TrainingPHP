@@ -20,7 +20,13 @@
 <!-- Example DataTables Card-->
 <div class="card mb-3">
  <div class="card-header">
-   <i class="fa fa-table"></i> Users Lists </div>
+    <i class="fa fa-table"></i> Users Lists &nbsp;&nbsp;
+    <a href="{{ URL::to('admin/users/create') }}">
+        <button type="button" class="btn btn-primary btn-sm">Create User</button>
+    </a>
+  </div>
+
+ </div>
 
  <div class="card-body">
    <div class="table-responsive">
@@ -64,22 +70,19 @@
                    <span class="badge badge-success">Active</span>
                    <span class="badge badge-danger">Inactive</span>
                </td>
-               <td>
-                   <a href="#">
-                       <button type="button" class="btn btn-primary btn-sm">Info</button>
-                   </a>
-                   <a href="#">
-                       <button type="button" class="btn btn-success btn-sm">Edit</button>
-                   </a>
-                   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_user_4">Delete</button>
-                   <!-- Include Delete Modal Confirmation -->
+           <td>
+                        <a href="#">
+                            <button type="button" class="btn btn-primary btn-sm">Info</button>
+                        </a>
+                        <a href="{{ URL::to('admin/users/'.$item->id.'/edit') }}">
+                            <button type="button" class="btn btn-success btn-sm">Edit</button>
+                        </a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_user_{{ $item->id }}">Delete</button>
+                        <!-- Include Delete Modal Confirmation -->
+                        @include('admin.layouts.partials.modal-delete', ['url' => 'admin/user', 'name' => 'user', 'id' => $item->id])
 
-                   <!-- #################### Modal Delete Row by Row in Table Start #################### -->
-                   <!-- Waiting for flash message -->
-                   <!-- #################### Modal Delete Row by Row in Table Start #################### -->
+                    </td>
 
-
-               </td>
              </tr>
            @endforeach
            @endif
